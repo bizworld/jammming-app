@@ -21,6 +21,17 @@ class App extends React.Component {
       ]
     };
 
+    /* Add hard-coded values for playlistName and playlistTracks to state in
+    App.js.*/
+    this.playlistName = 'playlistName';
+    this.playlistTracks = [
+      {
+        name: 'name',
+        artist: 'artist',
+        album: 'album'
+      }
+    ];
+
   }
 
   render() {
@@ -31,7 +42,8 @@ class App extends React.Component {
           {/* Add a SearchBar component */}
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} /> {/* Pass the state of the App component's searchResults to the SearchResults component. */}
-            {/* Add a Playlist component */}
+            <Playlist playlistName={this.state.playlistName}
+                      playlistTracks={this.state.playlistTracks} /> {/* Pass the playlist name and tracks from the App component to the Playlist component. */}
           </div>
         </div>
       </div>
