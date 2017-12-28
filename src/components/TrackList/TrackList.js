@@ -10,8 +10,11 @@ class TrackList extends React.Component {
     return (
       <div className="TrackList">
           {/* You will add a map method that renders a set of Track components */}
-          {/* For now, hard code 3 tracks that will later be replaced with Spotify tracks.  */}
-          <Track />
+          {/* For now, hard code 3 tracks that will later be replaced with Spotify tracks. */}
+          this.props.tracks.map(track => {
+            <Track key={track.id} name={this.props.track.name} artist={this.props.track.artist} album={this.props.track.album} />  // use `return` keyword?, use the .map() method to render each track in the tracks property.
+          });
+          <Track /> {/* these 3 removed? */}
           <Track />
           <Track />
       </div>

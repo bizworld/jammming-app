@@ -9,8 +9,7 @@ class SearchResults extends React.Component {
     return (
       <div className="SearchResults">
         <h2>Results</h2>
-        {/* Add a TrackList component */}
-        <TrackList />
+        <TrackList tracks={this.props.searchResults} /> {/* Pass the search results from the SearchResults component to the TrackList component as a prop, tracks. */}
       </div>
     );
   }
