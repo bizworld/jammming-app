@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App'; // OR './App.js';
+import './index.css'; // either this or line 6
 import registerServiceWorker from './registerServiceWorker';
-import App from './components/App/App'; //import App from './components/App/App.js'; ?
-import './components/App/App.css';
+import App from './components/App/App'; // OR import App from './components/App/App.js';
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
