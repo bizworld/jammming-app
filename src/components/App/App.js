@@ -38,3 +38,6 @@ class App extends React.Component {
     );
   }
 }
+
+// export the App component to make it available to other components of the app.
+export default App;
