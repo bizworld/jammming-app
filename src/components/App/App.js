@@ -32,6 +32,20 @@ class App extends React.Component {
       }
     ];
 
+    // Bind the current value of `this` to .addTrack().
+    this.addTrack = this.addTrack.bind(this);
+
+  }
+
+  addTrack(track) {
+    /* Use the track's id property to check if the current song is in the
+    playlistTracks state.
+    If the id is new, add the song to the end of the playlist. */
+    if (!(track.id === this.playlistTracks[0].name)) {
+      this.playlistTracks.push(track.id);
+    }
+    // Set the new state of the playlist
+    this.setState = this.playlistTracks;
   }
 
   render() {
@@ -41,7 +55,9 @@ class App extends React.Component {
         <div className="App">
           {/* Add a SearchBar component */}
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults} /> {/* Pass the state of the App component's searchResults to the SearchResults component. */}
+            {/* Pass the state of the App component's searchResults to the SearchResults component. */}
+            <SearchResults searchResults={this.state.searchResults}
+                           onAdd={this.addTrack} /> {/* Pass .addTrack() to the SearchResults component as an onAdd attribute. */}
             <Playlist playlistName={this.state.playlistName}
                       playlistTracks={this.state.playlistTracks} /> {/* Pass the playlist name and tracks from the App component to the Playlist component. */}
           </div>
