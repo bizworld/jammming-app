@@ -18,19 +18,18 @@ class App extends React.Component {
           artist: 'artist',
           album: 'album'
         }
+      ],
+      /* Add hard-coded values for playlistName and playlistTracks to state in
+      App.js.*/
+      playlistName: 'playlistName',
+      playlistTracks: [
+        {
+          name: 'name',
+          artist: 'artist',
+          album: 'album'
+        }
       ]
     };
-
-    /* Add hard-coded values for playlistName and playlistTracks to state in
-    App.js.*/
-    this.playlistName = 'playlistName';
-    this.playlistTracks = [
-      {
-        name: 'name',
-        artist: 'artist',
-        album: 'album'
-      }
-    ];
 
     // Bind the current value of `this` to .addTrack().
     this.addTrack = this.addTrack.bind(this);
@@ -41,11 +40,19 @@ class App extends React.Component {
     /* Use the track's id property to check if the current song is in the
     playlistTracks state.
     If the id is new, add the song to the end of the playlist. */
-    if (!(track.id === this.playlistTracks[0].name)) {
-      this.playlistTracks.push(track.id);
-    }
-    // Set the new state of the playlist
-    this.setState = this.playlistTracks;
+    //this.state.playlistTracks.some(track.id);
+    const playListTracks = this.state.playlistTracks;
+
+    //playListTracks.some(!track.id);
+
+    playListTracks.push(track);
+    // if (!(track.id === this.playlistTracks[0].name)) {
+    //   this.playlistTracks.push(track.id);
+    // }
+    // Set the new state of the playlist  (this.playlistTracks)
+    this.setState({
+      playlistTracks: playListTracks
+    });
   }
 
   render() {
