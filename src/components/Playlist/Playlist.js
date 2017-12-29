@@ -8,7 +8,9 @@ class Playlist extends React.Component {
       <div className="Playlist">
         <input defaultValue={'New Playlist'}/>
         {/* <TrackList /> initially commented out since it doesn’t work without any props. */}
-        <TrackList tracks={this.props.playlistTracks} /> {/* Pass the playlist tracks from the Playlist component to the TrackList component as a prop, tracks. */}
+        {/* Pass the playlist tracks from the Playlist component to the TrackList component as a prop, tracks. */}
+        <TrackList tracks={this.props.playlistTracks}
+        /> {/* Pass the playlist tracks from the Playlist component to the TrackList component as a prop, tracks. */}
         <a className="Playlist-save">SAVE TO SPOTIFY</a>
       </div>
     );

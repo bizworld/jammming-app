@@ -34,25 +34,25 @@ class App extends React.Component {
     // Bind the current value of `this` to .addTrack().
     this.addTrack = this.addTrack.bind(this);
 
+    // Bind the current value of `this` to .removeTrack().
+    this.removeTrack = this.removeTrack.bind(this);
+
   }
 
-  addTrack(track) {
-    /* Use the track's id property to check if the current song is in the
-    playlistTracks state.
-    If the id is new, add the song to the end of the playlist. */
-    //this.state.playlistTracks.some(track.id);
-    const playListTracks = this.state.playlistTracks;
+  addTrack(event) {
+    this.props.onAdd(this.props.track);
 
-    //playListTracks.some(!track.id);
-
-    playListTracks.push(track);
-    // if (!(track.id === this.playlistTracks[0].name)) {
-    //   this.playlistTracks.push(track.id);
-    // }
-    // Set the new state of the playlist  (this.playlistTracks)
     this.setState({
-      playlistTracks: playListTracks
+      playlistTracks: playlistTracks
     });
+  }
+
+  removeTrack(event) {
+    this.props.onRemove(this.props.track);
+
+    this.setState({
+      playlistTracks: playlistTracks
+    })
   }
 
   render() {
@@ -65,8 +65,10 @@ class App extends React.Component {
             {/* Pass the state of the App component's searchResults to the SearchResults component. */}
             <SearchResults searchResults={this.state.searchResults}
                            onAdd={this.addTrack} /> {/* Pass .addTrack() to the SearchResults component as an onAdd attribute. */}
+            {/* Pass the playlist name and tracks from the App component to the Playlist component. */}
             <Playlist playlistName={this.state.playlistName}
-                      playlistTracks={this.state.playlistTracks} /> {/* Pass the playlist name and tracks from the App component to the Playlist component. */}
+                      playlistTracks={this.state.playlistTracks}
+                      onRemove={this.removeTrack} /> {/* Pass .removeTrack() to the Playlist component as an onRemove attribute. */}
           </div>
         </div>
       </div>
