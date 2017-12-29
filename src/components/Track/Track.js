@@ -25,12 +25,12 @@ class Track extends React.Component {
   }
 
   // Use the .addTrack() method to add this.props.track to the playlist.
-  addTrack() {
+  addTrack(event) {
     this.props.onAdd(this.props.track);
   }
 
   // Use the .removeTrack() to remove this.props.track from the playlist.
-  removeTrack() {
+  removeTrack(event) {
     this.props.onRemove(this.props.track);
   }
 
