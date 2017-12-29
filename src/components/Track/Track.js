@@ -9,6 +9,9 @@ class Track extends React.Component {
 
     // Bind this.addTrack() to the current value of `this`.
     this.addTrack = this.addTrack.bind(this);
+
+    // Bind this.removeTrack() to the current value of this
+    this.removeTrack = this.removeTrack.bind(this);
   }
 
   /* A renderAction() method that displays a - anchor tag if the isRemoval
@@ -26,6 +29,7 @@ class Track extends React.Component {
     this.props.onAdd(this.props.track);
   }
 
+  // Use the .removeTrack() to remove this.props.track from the playlist.
   removeTrack() {
     this.props.onRemove(this.props.track);
   }

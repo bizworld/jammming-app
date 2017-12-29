@@ -28,18 +28,17 @@ class App extends React.Component {
   }
 
   addTrack(event) {
-
-
+    let tracks = this.state.playlistTracks
+    tracks.push(event)
     this.setState({
-      playlistTracks: playlistTracks
+      playlistTracks: tracks
     });
   }
 
   removeTrack(event) {
 
-
     this.setState({
-      playlistTracks: playlistTracks
+      playlistTracks: []
     })
   }
 

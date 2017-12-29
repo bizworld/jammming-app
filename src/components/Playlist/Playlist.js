@@ -22,7 +22,3 @@ class Playlist extends React.Component {
 /* export the Playlist component to expose it to other parts of the Jammming app.
 i.e. other components. */
 export default Playlist;
-
-<TrackList tracks={this.props.playlistTracks}
-                   isRemoval={true}
-   />
