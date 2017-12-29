@@ -14,14 +14,20 @@ class Track extends React.Component {
   /* A renderAction() method that displays a - anchor tag if the isRemoval
   property is true, and a + anchor tag if the isRemoval property is false. Set
   the class name (i.e. className) to Track-action. */
-  renderAction() { // using ternary operator
-    return this.props.isRemoval ? <a className="Track-action" onClick={this.removeTrack}>-</a> :
-                                  <a className="Track-action" onClick={this.addTrack}>+</a>;
+  renderAction() {
+    if (this.props.isRemoval) {
+      return <a className="Track-action" onClick={this.removeTrack}>-</a>
+    }
+    return <a className="Track-action" onClick={this.addTrack}>+</a>;
   }
 
   // Use the .addTrack() method to add this.props.track to the playlist.
   addTrack() {
     this.props.onAdd(this.props.track);
+  }
+
+  removeTrack() {
+    this.props.onRemove(this.props.track);
   }
 
   render() {
@@ -31,7 +37,7 @@ class Track extends React.Component {
           <h3>{/* track name will go here */}</h3>
           <p>{/* track artist will go here */} | {/* track album will go here */}</p>
         </div>
-      
+
         {this.renderAction()}
       </div>
     );

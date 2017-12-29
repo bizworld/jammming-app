@@ -9,8 +9,10 @@ class Playlist extends React.Component {
         <input defaultValue={'New Playlist'}/>
         {/* <TrackList /> initially commented out since it doesn’t work without any props. */}
         {/* Pass the playlist tracks from the Playlist component to the TrackList component as a prop, tracks. */}
+        {/* passing `true` through the use of the isRemoval props */}
         <TrackList tracks={this.props.playlistTracks}
-        /> {/* Pass the playlist tracks from the Playlist component to the TrackList component as a prop, tracks. */}
+        isRemoval={true}
+        onRemove={this.props.onRemove} /> {/* Pass onRemove from the Playlist component to the TrackList component. */}
         <a className="Playlist-save">SAVE TO SPOTIFY</a>
       </div>
     );
@@ -20,3 +22,7 @@ class Playlist extends React.Component {
 /* export the Playlist component to expose it to other parts of the Jammming app.
 i.e. other components. */
 export default Playlist;
+
+<TrackList tracks={this.props.playlistTracks}
+                   isRemoval={true}
+   />

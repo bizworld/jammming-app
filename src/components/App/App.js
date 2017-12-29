@@ -12,23 +12,11 @@ class App extends React.Component {
      set this.state to an object with a property, searchResults, set to an
      array of objects, each containing name, artist, and album properties. */
     this.state = {
-      searchResults: [
-        {
-          name: 'name',
-          artist: 'artist',
-          album: 'album'
-        }
-      ],
+      searchResults: [],
       /* Add hard-coded values for playlistName and playlistTracks to state in
       App.js.*/
       playlistName: 'playlistName',
-      playlistTracks: [
-        {
-          name: 'name',
-          artist: 'artist',
-          album: 'album'
-        }
-      ]
+      playlistTracks: []
     };
 
     // Bind the current value of `this` to .addTrack().
@@ -40,7 +28,7 @@ class App extends React.Component {
   }
 
   addTrack(event) {
-    this.props.onAdd(this.props.track);
+
 
     this.setState({
       playlistTracks: playlistTracks
@@ -48,7 +36,7 @@ class App extends React.Component {
   }
 
   removeTrack(event) {
-    this.props.onRemove(this.props.track);
+
 
     this.setState({
       playlistTracks: playlistTracks
