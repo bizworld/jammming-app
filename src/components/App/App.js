@@ -13,7 +13,7 @@ class App extends React.Component {
      array of objects, each containing name, artist, and album properties. */
     this.state = {
       searchResults: [],
-      /* Add hard-coded values for playlistName and playlistTracks to state in
+      /* Hard-coded values for playlistName and playlistTracks to state in
       App.js.*/
       playlistName: 'playlistName',
       playlistTracks: []
@@ -25,6 +25,18 @@ class App extends React.Component {
     // Bind the current value of `this` to .removeTrack().
     this.removeTrack = this.removeTrack.bind(this);
 
+    // Bind `this` to .updatePlaylistName() (because it is used to set a state)
+    this.updatePlaylistName = this.updatePlaylistName.bind(this);
+
+    // Bind the current value of `this` to .savePlaylist()
+    this.savePlaylist = this.savePlaylist.bind(this);
+
+  }
+
+  savePlaylist() {
+    /* Generates an array of uri values called trackURIs from the playlistTracks
+    property. */
+    const trackURIs = this.state.playlistTracks;
   }
 
   addTrack(event) {
@@ -36,10 +48,16 @@ class App extends React.Component {
   }
 
   removeTrack(event) {
-
     this.setState({
       playlistTracks: []
     })
+  }
+
+  updatePlaylistName(name) {
+    this.setState({
+      // Sets the state of the playlist name to the input argument
+      playlistName: name
+    });
   }
 
   render() {
@@ -53,8 +71,12 @@ class App extends React.Component {
             <SearchResults searchResults={this.state.searchResults}
                            onAdd={this.addTrack} /> {/* Pass .addTrack() to the SearchResults component as an onAdd attribute. */}
             {/* Pass the playlist name and tracks from the App component to the Playlist component. */}
+            {/* Pass updatePlaylistName to the Playlist component as an attribute, onNameChange */}
+            {/* Pass savePlaylist to the Playlist component as an attribute, onSave. */}
             <Playlist playlistName={this.state.playlistName}
                       playlistTracks={this.state.playlistTracks}
+                      onNameChange={this.updatePlaylistName}
+                      onSave={this.savePlaylist}
                       onRemove={this.removeTrack} /> {/* Pass .removeTrack() to the Playlist component as an onRemove attribute. */}
           </div>
         </div>
