@@ -4,6 +4,11 @@ import './SearchBar.css'; // import the SearchBar.css file from the same directo
 
 class SearchBar extends React.Component {
 
+  /* a method, search, that passes the state of the term to this.props.onSearch */
+  search() {
+    this.props.onSearch(); // state of the term to this?
+  }
+
   render() {
     return (
       <div className="SearchBar"> {/* JSX elements start here */}

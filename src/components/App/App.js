@@ -31,6 +31,9 @@ class App extends React.Component {
     // Bind the current value of `this` to .savePlaylist()
     this.savePlaylist = this.savePlaylist.bind(this);
 
+    // Bind `this` to .search() since we will use `this` in .search().
+    this.search = this.search.bind(this);
+
   }
 
   savePlaylist() {
@@ -61,12 +64,19 @@ class App extends React.Component {
     });
   }
 
+  // method to hook up to the Spotify API
+  search(searchTerm) {
+    // logs the term to the console for now
+    console.log(searchTerm);
+  }
+
   render() {
     return (
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
         <div className="App">
-          {/* Add a SearchBar component */}
+          {/* Pass .search() to the SearchBar component as an onSearch attribute. */}
+          <SearchBar onSearch={this.search} />
           <div className="App-playlist">
             {/* Pass the state of the App component's searchResults to the SearchResults component. */}
             <SearchResults searchResults={this.state.searchResults}
