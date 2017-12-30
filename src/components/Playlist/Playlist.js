@@ -7,14 +7,14 @@ class Playlist extends React.Component {
     super(props);
 
     // Bind the current value of `this` to .onNameChange()
-    this.onNameChange = this.onNameChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
   }
 
   /* method accepts an event that is triggered by an onChange attribute
   in the Playlist component's <input> element. */
   handleNameChange(event) {
     // call .onNameChange() with the event target's value (from the <input> element)
-    this.onNameChange(event.target.value);
+    this.props.onNameChange(event.target.value);
   }
 
   render() {
