@@ -45,8 +45,8 @@ class App extends React.Component {
   }
 
   addTrack(event) {
-    let tracks = this.state.playlistTracks
-    tracks.push(event)
+    let tracks = this.state.playlistTracks;
+    tracks.push(event);
     this.setState({
       playlistTracks: tracks
     });

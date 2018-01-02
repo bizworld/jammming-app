@@ -18,7 +18,7 @@ const Spotify = {
       // Set a variable for expiration time
       const expiresIn = Number(expiresInMatch[1]);
       // Set the access token to expire at the value for expiration time
-      window.setTimeout(() = > accessToken = '', expiresIn * 1000);
+      window.setTimeout(() => accessToken = '', expiresIn * 1000);
       /* Clear the parameters from the URL, so the app doesn't try grabbing the
       access token after it has expired.
       i.e. wipes the access token and URL parameters. */
