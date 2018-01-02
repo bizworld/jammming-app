@@ -40,11 +40,12 @@ class App extends React.Component {
   savePlaylist() {
     /* Generates an array of uri values called trackURIs from the playlistTracks
     property. */
-    const trackURIs = this.state.playlistTracks.map(track => track.uri); // this remains?
-    Spotify.savePlaylist();
-    this.setState({
-      playlistName: 'New Playlist',
-      searchResults: []
+    const trackURIs = this.state.playlistTracks.map(track => track.uri); 
+    Spotify.savePlaylist(this.state.playlistName, trackURIs).then(() => {
+      this.setState({
+        playlistName: 'New Playlist',
+        playlistTracks: []
+      });
     });
   }
 

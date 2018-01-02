@@ -62,12 +62,12 @@ const Spotify = {
 
   savePlaylist(playlistName, trackURIs) {
     if (!(playlistName && trackURIs)) {
-      return ; // return what?
+      return ; // empty return, not returning anything in particular
     }
     // Create 3 default variables
-    const accessToken = getAccessToken(); // current user's access token
+    const accessToken = Spotify.getAccessToken(); // current user's access token
     const headers = { Authorization: `Bearer ${accessToken}` };
-    const userId = '';
+    let userId;
 
     // Make a request that returns the user's Spotify username.
     return fetch('https://api.spotify.com/v1/me',
@@ -81,18 +81,19 @@ const Spotify = {
       return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
         headers: headers,
         method: 'POST',
-        body: 'body'
+        body: JSON.stringify({name: playlistName})
       })
-      /* Use the returned user ID to make a POST request that creates a new
-      playlist in the user's account and returns a playlist ID. */
-      const playlistID;
-      fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistID}/tracks`, {
-        headers: headers,
-        method: 'POST',
-        body: 'body'
-      }); // 94/99 cont.
-    });
-
+    }).then(response => response.json()
+      ).then(jsonResponse => {
+        /* Use the returned user ID to make a POST request that creates a new
+        playlist in the user's account and returns a playlist ID. */
+        let playlistID;
+        return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistID}/tracks`, {
+          headers: headers,
+          method: 'POST',
+          body: JSON.stringify({uris: trackURIs})
+        }); // 94/99 cont.
+      });
 
   }
 
