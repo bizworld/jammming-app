@@ -58,7 +58,31 @@ const Spotify = {
           }
         ));
       }); // 2nd then()
+  },
+
+  savePlaylist(playlistName, trackURIs) {
+    if (!(playlistName && trackURIs)) {
+      return ; // return what?
+    }
+    // Create 3 default variables
+    const accessToken = 'current_user'; // current user's access token
+    const headers = { Authorization: `Bearer ${accessToken}` };
+    const userId;
+
+    // Make a request that returns the user's Spotify username.
+    return fetch('https://api.spotify.com/v1/me',
+    {headers: headers}).then(
+      // Convert the response to JSON and save the response id parameter to the user's ID variable.
+      response => {
+        return response.json();
+      }
+    ).then(jsonResponse => {
+      userId = jsonResponse.id;
+    });
+
+
   }
+
 
 
 };
