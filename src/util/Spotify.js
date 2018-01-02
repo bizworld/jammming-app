@@ -32,6 +32,7 @@ const Spotify = {
   },
   // returns a promise that will eventually resolve to the list of tracks from the search.
   search: term => {
+    const accessToken = Spotify.getAccessToken();
     // the start of promise chain
     return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`,
       // Add an Authorization header to the request containing the access token.
@@ -42,25 +43,21 @@ const Spotify = {
         response => {
           return response.json();
         }
-      ).then(
-        // map the converted JSON to an array of tracks
-        if (jsonResponse.tracks) {
-          return jsonResponse.tracks.map(track => (
-            {
-              id: track.id,
-              name: track.name,
-              artist: track.artists[0].name,
-              album: track.album.name,
-              uri: track.uri
-            }
-          ));
-        } else {
+      ).then(jsonResponse => {
+        // If the JSON does not contain any tracks, return an empty array
+        if (!jsonResponse.tracks) {
           return [];
-        }
-      )
-      ;
-
-
+      } // otherwise, map the converted JSON to an array of tracks
+        return jsonResponse.tracks.map(track => (
+          {
+            id: track.id,
+            name: track.name,
+            artist: track.artists[0].name,
+            album: track.album.name,
+            uri: track.uri
+          }
+        ));
+      }); // 2nd then()
   }
 
 

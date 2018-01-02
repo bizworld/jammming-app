@@ -3,6 +3,7 @@ import SearchBar from '../SearchBar/SearchBar.js';
 import SearchResults from '../SearchResults/SearchResults.js';
 import Playlist from '../Playlist/Playlist.js';
 import './App.css';
+import Spotify from '../../util/Spotify.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -65,9 +66,11 @@ class App extends React.Component {
   }
 
   // method to hook up to the Spotify API
-  search(searchTerm) {
-    // logs the term to the console for now
-    console.log(searchTerm);
+  search(term) {
+    Spotify.search(term).then(searchResults => {
+      // Update the state of searchResults with the value resolved from Spotify.search()'s promise, line 70.
+      this.setState({searchResults: searchResults});
+    });
   }
 
   render() {
