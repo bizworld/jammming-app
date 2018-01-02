@@ -65,9 +65,9 @@ const Spotify = {
       return ; // return what?
     }
     // Create 3 default variables
-    const accessToken = 'current_user'; // current user's access token
+    const accessToken = getAccessToken(); // current user's access token
     const headers = { Authorization: `Bearer ${accessToken}` };
-    const userId;
+    const userId = '';
 
     // Make a request that returns the user's Spotify username.
     return fetch('https://api.spotify.com/v1/me',
@@ -78,6 +78,19 @@ const Spotify = {
       }
     ).then(jsonResponse => {
       userId = jsonResponse.id;
+      return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+        headers: headers,
+        method: 'POST',
+        body: 'body'
+      })
+      /* Use the returned user ID to make a POST request that creates a new
+      playlist in the user's account and returns a playlist ID. */
+      const playlistID;
+      fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistID}/tracks`, {
+        headers: headers,
+        method: 'POST',
+        body: 'body'
+      }); // 94/99 cont.
     });
 
 
