@@ -3,7 +3,7 @@ import SearchBar from '../SearchBar/SearchBar.js';
 import SearchResults from '../SearchResults/SearchResults.js';
 import Playlist from '../Playlist/Playlist.js';
 import './App.css';
-import Spotify from '../../util/Spotify.js';
+import Spotify from '../../util/Spotify.js'; // go to parent, grandparent, then util folder
 
 class App extends React.Component {
   constructor(props) {
