@@ -5,6 +5,8 @@ import Playlist from '../Playlist/Playlist.js';
 import './App.css';
 import Spotify from '../../util/Spotify.js'; // go to parent, grandparent, then util folder
 
+Spotify.getAccessToken();
+
 class App extends React.Component {
   constructor(props) {
     super(props);
