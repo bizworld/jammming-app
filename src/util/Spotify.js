@@ -2,7 +2,7 @@
 / `let` instead of `const` because the value of accessToken is liable to change */
 let accessToken; // defined (but not initialized) i.e. a variable that will be used later
 const clientId = '7448c52ab91d44508b10679b0e954d5d';
-const redirectUri = 'http://bizworld.surge.sh/'; // http://bizworld.surge.sh/ replaces http://localhost:3000/ in 1/2 places to deploy the app.
+const redirectUri = 'http://localhost:3000/'; // http://bizworld.surge.sh/ replaces http://localhost:3000/ in 1/2 places to deploy the app.
 const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
 const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
 
