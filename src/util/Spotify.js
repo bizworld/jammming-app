@@ -61,7 +61,7 @@ const Spotify = {
             uri: track.uri
           }
         ));
-      }); // 2nd then(), fixed
+      }); // 2nd then(), fixed here
   },
 
   savePlaylist(playlistName, trackURIs) { // to be reviewed
