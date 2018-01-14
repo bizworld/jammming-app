@@ -1,7 +1,7 @@
 /* Declare an empty variable that will hold the user's access token.
 / `let` instead of `const` because the value of accessToken is liable to change */
 let accessToken; // defined (but not initialized) i.e. a variable that will be used later
-const clientId = '7448c52ab91d44508b10679b0e9....';
+const clientId = '7448c52ab91d44508b10679b0e954d5d';
 const redirectUri = 'http://localhost:3000/'; // http://bizworld.surge.sh/ replaces http://localhost:3000/ in 1/2 places to deploy the app.
 
 // Create a Spotify module, first as an empty object.
