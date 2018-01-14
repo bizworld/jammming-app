@@ -1,14 +1,18 @@
 /* Declare an empty variable that will hold the user's access token.
 / `let` instead of `const` because the value of accessToken is liable to change */
 let accessToken; // defined (but not initialized) i.e. a variable that will be used later
-const clientId = '7448c52ab91d44508b10679b0e954d5d';
+const clientId = '7448c52ab91d44508b10679b0e9....';
 const redirectUri = 'http://localhost:3000/'; // http://bizworld.surge.sh/ replaces http://localhost:3000/ in 1/2 places to deploy the app.
-const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
-const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
 
 // Create a Spotify module, first as an empty object.
 const Spotify = {
   getAccessToken: () => {
+    if (accessToken) {
+      return accessToken;
+    }
+
+    const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/);
+    const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
     /* Check if the user's access token is already set. If it is, return the
     value saved to access token.
     To check if userAccessToken is set, 78/99, 2nd p */
@@ -57,11 +61,11 @@ const Spotify = {
             uri: track.uri
           }
         ));
-      }); // 2nd then()
+      }); // 2nd then(), fixed
   },
 
   savePlaylist(playlistName, trackURIs) { // to be reviewed
-    if (!(playlistName && trackURIs)) {
+    if (!playlistName || !trackURIs.length) {
       return ; // empty return, not returning anything in particular
     }
     // Create 3 default variables
@@ -82,27 +86,21 @@ const Spotify = {
         headers: headers,
         method: 'POST',
         body: JSON.stringify({name: playlistName})
-      })
     }).then(response => response.json()
       ).then(jsonResponse => {
         /* Use the returned user ID to make a POST request that creates a new
         playlist in the user's account and returns a playlist ID. */
-        let playlistID;
-        return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistID}/tracks`, {
+        const playlistId = jsonResponse.id;
+        return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
           headers: headers,
           method: 'POST',
           body: JSON.stringify({uris: trackURIs})
-        }); // 94/99 cont.
+        });
       });
-
+    });
   }
 
-
-
 };
-
-
-
 
 
 // export the Spotify module to expose it to other components of the Jammming app.
